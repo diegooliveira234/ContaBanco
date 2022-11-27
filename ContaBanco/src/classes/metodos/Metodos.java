@@ -1,5 +1,8 @@
 package classes.metodos;
 
+import java.util.Random;
+
+
 public class Metodos {
 private String cpf;
 private String nome;
@@ -44,28 +47,41 @@ public double getSaldo() {
 public void setSaldo(double saldo) {
 	this.saldo = saldo;
 }
-public void  Status() {
- System.out.println("Nome :"+ getNome());
- System.out.println("Sobrenome :"+ getSobrenome());
- System.out.println("Agência :"+ getAgencia());
- System.out.println("Conta ::"+ getConta());
- System.out.println("Agência :"+ getAgencia());
- System.out.println("Saldo :"+ getSaldo());
+public boolean getContaAtiva() {
+	return contaAtiva;
+}
+public void setContaAtiva(boolean contaAtiva) {
+	this.contaAtiva= contaAtiva;
 }
 
+public void  Status() {
+ System.out.println("Nome : "+ getNome());
+ System.out.println("Sobrenome : "+ getSobrenome());
+ System.out.println("CPF : " + getCpf());
+ System.out.println("Conta : "+ getConta());
+ System.out.println("Agência : "+ getAgencia());
+ System.out.println("Saldo : R$ "+ getSaldo());
+ System.out.println("Conta Ativa ? "+(getContaAtiva() ? " Conta Ativa " : "Conta Inativa, Favor Procurar o Gerente "));
+}
+Metodos(){
+	
+};
+
 Metodos(String nome, String sobrenome, String cpf ){
+	Random randon = new Random();
 	this.nome=nome;
 	this.sobrenome=sobrenome;
 	this.cpf=cpf;
 	this.saldo=100;
-	this.agencia=random(5000);
-	this.conta=random(100000);
-	this.contaAtiva=true;
+	this.agencia=randon.nextInt(5000);
+	this.conta=randon.nextInt(100000);
+	if(getSaldo()>=150) {
+		this.setContaAtiva(true);
+	}else {
+		this.setContaAtiva(false);
+	}
 }
-private int random(int i) {
-	// TODO Auto-generated method stub
-	return 0;
-}
+
 }
 
 
