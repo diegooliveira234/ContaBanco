@@ -8,9 +8,11 @@ private String cpf;
 private String nome;
 private String sobrenome;
 private int conta;
-boolean contaAtiva;
+private boolean contaAtiva;
 private int agencia;
 private double saldo;
+private boolean contaPoupanca;
+private boolean contaCorrente;
 public String getCpf() {
 	return cpf;
 }
@@ -53,34 +55,62 @@ public boolean getContaAtiva() {
 public void setContaAtiva(boolean contaAtiva) {
 	this.contaAtiva= contaAtiva;
 }
-
-public void  Status() {
+public boolean isContaPoupanca() {
+	return contaPoupanca;
+}
+public void setContaPoupanca(boolean contaPoupança) {
+	this.contaPoupanca = contaPoupança;
+}
+public boolean isContaCorrente() {
+	return contaCorrente;
+}
+public void setContaCorrente(boolean contaCorrente) {
+	this.contaCorrente = contaCorrente;
+}
+public void  Extrato() {
  System.out.println("Nome : "+ getNome());
  System.out.println("Sobrenome : "+ getSobrenome());
  System.out.println("CPF : " + getCpf());
  System.out.println("Conta : "+ getConta());
  System.out.println("Agência : "+ getAgencia());
  System.out.println("Saldo : R$ "+ getSaldo());
+ System.out.println("Tipo de Conta : "+(isContaCorrente() ?"Conta Corrente ":"Conta Poupança"));
  System.out.println("Conta Ativa ? "+(getContaAtiva() ? " Conta Ativa " : "Conta Inativa, Favor Procurar o Gerente "));
 }
-Metodos(){
-	
-};
+Metodos(){};
 
-Metodos(String nome, String sobrenome, String cpf ){
+Metodos(String nome, String sobrenome, String cpf
+		, double deposito){
 	Random randon = new Random();
 	this.nome=nome;
 	this.sobrenome=sobrenome;
 	this.cpf=cpf;
-	this.saldo=100;
+	this.saldo=deposito;
 	this.agencia=randon.nextInt(5000);
 	this.conta=randon.nextInt(100000);
-	if(getSaldo()>=150) {
+	if(deposito>=150) {
 		this.setContaAtiva(true);
+		this.setContaCorrente(true);
+	}else if(deposito>=50&&deposito<150){
+		this.setContaAtiva(true);
+		this.setContaPoupanca(true);
 	}else {
+		this.setContaPoupanca(true);
 		this.setContaAtiva(false);
 	}
 }
+
+public void Depositar(double deposito) {
+	this.saldo=getSaldo()+deposito;
+}
+public void Sacar(double saque) {
+	if(getSaldo()<saque) {
+		System.out.println("Não é possível realizar operação, saldo inferior ao valor de saque ");
+	}else {
+		this.saldo=getSaldo()-saque;
+	}
+}
+
 
 }
 
