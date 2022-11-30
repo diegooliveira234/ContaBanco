@@ -1,5 +1,7 @@
 package classes.metodos;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -11,9 +13,15 @@ private double saldo;
 private boolean contaPoupanca;
 private boolean contaCorrente;
 private Cliente cliente = new Cliente();
+private List <Cliente> clientes = new ArrayList <Cliente>();
 
 
-
+public List<Cliente> getClientes() {
+	return clientes;
+}
+public void setClientes(List<Cliente> clientes) {
+	this.clientes = clientes;
+}
 public Cliente getCliente() {
 	return cliente;
 }
@@ -21,13 +29,13 @@ public void setCliente(Cliente cliente) {
 	this.cliente = cliente;
 }
 public int getConta() {
-	return conta;
+	return numeroConta();
 }
 public void setConta(int conta) {
 	this.conta = conta;
 }
 public int getAgencia() {
-	return agencia;
+	return numeroAgencia();
 }
 public void setAgencia(int agencia) {
 	this.agencia = agencia;
@@ -39,6 +47,7 @@ public void setSaldo(double saldo) {
 	this.saldo = saldo;
 }
 public boolean getContaAtiva() {
+	
 	return contaAtiva;
 }
 public void setContaAtiva(boolean contaAtiva) {
@@ -68,26 +77,40 @@ public void  Extrato() {
 }
 Metodos(){};
 
-Metodos(String nome, String sobrenome, String cpf, double deposito){
-	Random randon = new Random();
+Metodos(String nome, String sobrenome, String cpf ){
+	
 	getCliente().setNome(nome);
 	getCliente().setSobrenome(sobrenome);
 	getCliente().setCpf(cpf);
-	this.saldo=deposito;
-	this.agencia=randon.nextInt(5000);
-	this.conta=randon.nextInt(100000);
+	agencia=numeroAgencia();
+	conta =numeroConta();
+}
+public int numeroAgencia() {
+	Random randon = new Random();
+ int numeroAgencia = randon.nextInt(5000);
+ return numeroAgencia;
+}
+public int numeroConta() {
+	Random randon = new Random();
+ int numeroConta = randon.nextInt(1000000);
+ return numeroConta;
+}
+public void depositoAbertura(double deposito) {
 	if(deposito>=150) {
 		this.setContaAtiva(true);
 		this.setContaCorrente(true);
+		this.saldo=getSaldo()+deposito;
 	}else if(deposito>=50&&deposito<150){
 		this.setContaAtiva(true);
 		this.setContaPoupanca(true);
+		this.saldo=getSaldo()+deposito;
 	}else {
 		this.setContaPoupanca(true);
 		this.setContaAtiva(false);
+		this.saldo=getSaldo()+deposito;
 	}
+	
 }
-
 public void Depositar(double deposito) {
 	this.saldo=getSaldo()+deposito;
 }
