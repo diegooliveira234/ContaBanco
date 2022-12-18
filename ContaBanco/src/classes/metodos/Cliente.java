@@ -54,13 +54,13 @@ public class Cliente {
 	public void setNomePai(String nomePai) {
 		this.nomePai = nomePai;
 	}
-	@Override
+
 	public String toString() {
 		return "Cliente [nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", registroGeral="
 				+ registroGeral + ", dataNascimento=" + dataNascimento + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
 				+ "]";
 	}
-	@Override
+	
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -73,7 +73,7 @@ public class Cliente {
 		result = prime * result + ((sobrenome == null) ? 0 : sobrenome.hashCode());
 		return result;
 	}
-	@Override
+	
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

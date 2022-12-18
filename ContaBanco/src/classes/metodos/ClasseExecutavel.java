@@ -27,7 +27,7 @@ public class ClasseExecutavel {
 	c.setCliente(c1);
 	c.depositoAbertura(d);
 	c.Extrato();
-	c.getClientes().add(c1);
+	
 	/*Metodos c2 = new Metodos("Diego","de Araujo Oliveira","123.456.789-78",200);
 	c2.Extrato();
 	}*/

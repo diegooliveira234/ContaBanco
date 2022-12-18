@@ -13,7 +13,7 @@ private double saldo;
 private boolean contaPoupanca;
 private boolean contaCorrente;
 private Cliente cliente = new Cliente();
-private List <Cliente> clientes = new ArrayList <Cliente>();
+/*private List <Cliente> clientes = new ArrayList <Cliente>();
 
 
 public List<Cliente> getClientes() {
@@ -21,7 +21,7 @@ public List<Cliente> getClientes() {
 }
 public void setClientes(List<Cliente> clientes) {
 	this.clientes = clientes;
-}
+}*/
 public Cliente getCliente() {
 	return cliente;
 }

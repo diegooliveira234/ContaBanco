@@ -5,5 +5,3 @@
  * @author Diego
  *
  */
-module ContaBanco {
-}
